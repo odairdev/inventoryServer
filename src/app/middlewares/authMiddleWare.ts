@@ -25,6 +25,6 @@ export default function authMiddleware(request: Request, response: Response, nex
         
         return next()
     } catch {
-        return response.sendStatus(401)
+        return response.status(401).json({error: 'You are not logged in.'})
     }
 }
