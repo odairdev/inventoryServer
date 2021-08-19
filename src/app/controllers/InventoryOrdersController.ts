@@ -1,6 +1,7 @@
 import {Request, Response} from 'express'
 import { getRepository } from 'typeorm'
 import { validate as isUuid } from 'uuid';
+import { CheckProductAmount } from '../utils/checkProductAmount'
 
 import InvetoryOrders from '../models/InventoryOrder'
 import Product from '../models/Product';
@@ -23,19 +24,13 @@ class InventoryOrders {
 
         if(!product) { return response.status(404).json({error: 'Product not found.'})}
 
-        if(type === 'out' && product.amount < order_amount) {
+        let productAmountFinal = CheckProductAmount(type, order_amount, product.amount)
+
+        if(productAmountFinal < 0) {
             return response.status(400).json({error: 'Order amount not available in inventory.'})
         }
 
-        let finalProductAmount = product.amount;
-
-        if(type === 'in') {
-            finalProductAmount += order_amount
-        } else {
-            finalProductAmount -= order_amount
-        }
-
-        await productsRepository.update(productId, { amount: finalProductAmount })
+        await productsRepository.update(productId, { amount: productAmountFinal })
 
         const order = inventoryRepository.create({ type, order_amount, product:productId })
 
@@ -43,7 +38,7 @@ class InventoryOrders {
 
         return response.status(200).json({
             order,
-            finalProductAmount
+            productAmountFinal
         })
     }
 
@@ -78,19 +73,13 @@ class InventoryOrders {
 
         if(!product) { return response.status(404).json({error: 'Product not found.'})}
 
-        if(type === 'out' && product.amount < order_amount) {
+        let productAmountFinal = CheckProductAmount(type, order_amount, product.amount)
+
+        if(productAmountFinal < 0) {
             return response.status(400).json({error: 'Order amount not available in inventory.'})
         }
 
-        let finalProductAmount = product.amount;
-
-        if(type === 'in') {
-            finalProductAmount += order_amount
-        } else {
-            finalProductAmount -= order_amount
-        }
-
-        await productsRepository.update(order.product.id, { amount: finalProductAmount })
+        await productsRepository.update(order.product.id, { amount: productAmountFinal })
 
         await inventoryRepository.update(id, { type, order_amount })
 
@@ -99,7 +88,7 @@ class InventoryOrders {
 
         return response.status(200).json({
             order,
-            finalProductAmount
+            productAmountFinal
         })
     }
 
