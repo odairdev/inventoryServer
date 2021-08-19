@@ -1,29 +1,41 @@
 import {Request, Response} from 'express'
 import { getRepository } from 'typeorm'
+import * as yup from 'yup'
 
 import User from '../models/User'
 
 class UserController {
-    index(request: Request, response: Response) {
-        return response.send({ userID: request.userId})
-    }
-
     async store(request: Request, response: Response) {
         const repository = getRepository(User)
 
-        const { email, password } = request.body
+        const { name, email, password } = request.body
+
+        const schema = yup.object().shape({
+            name: yup.string().required('Nome Obrigatório'),
+            email: yup.string().email().required('Email invalido'),
+            password: yup.string().min(6).required('Senha Obrigaória')
+        })
+
+        try {
+            await schema.validate(request.body, {abortEarly: false})
+        } catch (err) {
+            return response.status(400).json({error: err})
+        }
 
         const UserAlreadyExists = await repository.findOne({
             where: { email }
         })
 
-        if (UserAlreadyExists) { return response.sendStatus(409)}
+        if (UserAlreadyExists) { return response.status(409).json({error: 'email already in use.'})}
 
-        const user = repository.create({ email, password })
+        const user = repository.create({ name, email, password })
 
         await repository.save(user)
 
-        return response.json(user);
+        // @ts-expect-error
+        delete user.password
+
+        return response.status(201).json(user);
     }
 }
 

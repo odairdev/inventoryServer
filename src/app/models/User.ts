@@ -1,4 +1,4 @@
-import { Column, Entity, PrimaryGeneratedColumn, BeforeInsert, BeforeUpdate } from "typeorm";
+import { Column, Entity, PrimaryGeneratedColumn, BeforeInsert, BeforeUpdate, CreateDateColumn } from "typeorm";
 import bcrypt from 'bcryptjs'
 
 @Entity('users')
@@ -7,10 +7,16 @@ class User {
     id: string;
 
     @Column()
+    name: string;
+
+    @Column()
     email: string;
 
     @Column()
     password: string;
+
+    @CreateDateColumn()
+    created_at:  Date;
 
     @BeforeInsert()
     @BeforeUpdate()

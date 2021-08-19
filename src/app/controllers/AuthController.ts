@@ -15,11 +15,11 @@ class AuthController {
             where: { email }
         })
 
-        if (!user) { return response.sendStatus(401)}
+        if (!user) { return response.status(401).json({error: 'Email invalid.'})}
 
         const isValidPassword = await bcrypt.compare(password, user.password)
 
-        if(!isValidPassword) { return response.sendStatus(401)}
+        if(!isValidPassword) { return response.status(401).json({error: 'Password invalid.'})}
 
         const token = jwt.sign( {id: user.id}, `${process.env.JWT_SECRET}`, {expiresIn: '1d'} )
 
