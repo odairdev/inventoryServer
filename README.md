@@ -14,17 +14,17 @@
     <img alt="Made by" src="https://img.shields.io/badge/Made%20by-odairdev-blue">
   </a>
 
-  <img alt="Repository size" src="https://img.shields.io/github/repo-size/odairdev/inventoryServer-blue">
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/odairdev/inventoryServer?style=plastic>
 
   <a href="https://github.com/cassiogroh/WeatherHome/commits/master">
-    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/odairdev/inventoryServer-blue">
+    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/odairdev/inventoryServer?style=plastic>
   </a>
 
   <a href="https://github.com/cassiogroh/WeatherHome/issues">
-    <img alt="Repository issues" src="https://img.shields.io/github/issues/odairdev/inventoryServer-blue">
+    <img alt="Repository issues" src="https://img.shields.io/github/issues/odairdev/inventoryServer?style=plastic">
   </a>
 
-  <img alt="GitHub" src="https://img.shields.io/github/license/odairdev/inventoryServer-blue">
+  <img alt="GitHub" src="https://img.shields.io/github/license/odairdev/inventoryServer?style=plastic">
 </p>
 
 <p align="center">
@@ -124,4 +124,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE.md) f
 
 ---
 
-Made with 💛 &nbsp;by Odair José Custodio Junior 👋 &nbsp;[See my linkedin](https://www.linkedin.com/in/odairjcjunior/)
+Made by Odair José Custodio Junior 👍 &nbsp;[See my linkedin](https://www.linkedin.com/in/odairjcjunior/)
