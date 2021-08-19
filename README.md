@@ -42,7 +42,7 @@ This app provides a server with a database coded with NodeJS, TypeORM and Typesc
 
  - Restful API
 
-## 🚀 Technologies
+## 💻 Technologies
 
 Technologies used to develop this App
 - [Node.js](https://nodejs.org/en/)
@@ -56,7 +56,7 @@ Technologies used to develop this App
 - [UUID](https://www.npmjs.com/package/uuid)
 - [YUP](https://www.npmjs.com/package/yup)
 
-## 💻 Getting started
+## 🚀 Getting started
 
 ### Requirements
 
