@@ -8,7 +8,11 @@ class ProductsController {
     async create(request: Request, response: Response) {
         const repository = getRepository(Product)
 
-        const { name, category } = request.body
+        const { name, category, amount } = request.body
+
+        if(isNaN(amount) || !Number.isInteger(amount) || amount <= 0) {
+            return response.status(400).json({error: 'Product amount must be an integer above 0.'})
+        }
 
         const productAlreadyExists = await repository.findOne({
             where: { name }
@@ -16,7 +20,7 @@ class ProductsController {
 
         if(productAlreadyExists) { return response.status(400).json({error: 'Product already exists.'})}
 
-        const product = repository.create({ name, category })
+        const product = repository.create({ name, category, amount })
 
         await repository.save(product)
 
@@ -34,9 +38,13 @@ class ProductsController {
     async update(request: Request, response: Response) {
         const repository = getRepository(Product)
 
-        const { id, name, category } = request.body
+        const { id, name, category, amount } = request.body
 
         if(!isUuid(id)) { return response.status(400).json({error: 'Id not valid.'})}
+
+        if(isNaN(amount) || !Number.isInteger(amount) || amount <= 0) {
+            return response.status(400).json({error: 'Product amount must be an integer above 0.'})
+        }
 
         const product = await repository.findOne({
             where: { id }
@@ -44,12 +52,15 @@ class ProductsController {
 
         if(!product) { return response.status(400).json({error: 'Product not found.'})}
 
-        await repository.update(id, { name, category })
+        await repository.update(id, { name, category, amount })
 
-        product.name = name
-        product.category = category
+        const updatedProduct = {
+            name,
+            category,
+            amount
+        }
 
-        return response.status(200).json(product)
+        return response.status(200).json(updatedProduct)
     }
 
     async delete(request: Request, response: Response) {
