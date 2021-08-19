@@ -19,6 +19,7 @@
   </a>
 
   <img alt="GitHub" src="https://img.shields.io/github/license/odairdev/inventoryServer?style=plastic">
+
 </p>
 
 <p align="center">
@@ -37,7 +38,9 @@ This app provides a server with a database coded with NodeJS, TypeORM and Typesc
 
  - It's possible to register new products as well as edit, read and delete them.
 
- - You can create Inventory Order(in or out) that will directly affect the amount of that product amount.
+ - You can create Inventory Orders (in or out) that will directly affect the amount of that product amount.
+
+ - Restful API
 
 ## 🚀 Technologies
 
