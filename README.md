@@ -3,7 +3,7 @@
 </h1>
 
 <h3 align="center">
-  Web Server to manage prodcuts in an inventory system </br>
+  Web Server to manage products in an inventory system </br>
   Made with NodeJS, TypeORM and Typescript
 </h3>
 
@@ -73,14 +73,14 @@ $ git clone https://github.com/odairdev/inventoryServer && cd inventoryServer
 **Follow the steps below**
 
 - Create a .env.local file with a JWT_SECRET constant
-- Set a Container for the postgres DB in port: 5632
+- Set a Container for the postgres DB in port: 5432
 
 ```bash
 # Install the dependencies
 $ npm install
 
 # Start the app
-$ npm start
+$ npm dev
 
 # Well done, project is running!
 
