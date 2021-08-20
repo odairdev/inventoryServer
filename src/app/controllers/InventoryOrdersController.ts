@@ -47,7 +47,7 @@ class InventoryOrders {
 
         const orders = await repository.find()
 
-        return response.json(orders)
+        return response.json({orders})
     }
 
     async update(request: Request, response: Response) {

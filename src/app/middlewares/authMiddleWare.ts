@@ -16,10 +16,8 @@ export default function authMiddleware(request: Request, response: Response, nex
 
     const token = authorization.replace('Bearer', '').trim();
 
-    const slicedToken = token.slice(1, token.length - 1)
-
     try {
-        const data = jwt.verify(slicedToken, `${process.env.JWT_SECRET}`);
+        const data = jwt.verify(token, `${process.env.JWT_SECRET}`);
 
         const { id } = data as TokenPayload
 
