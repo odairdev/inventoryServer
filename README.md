@@ -80,7 +80,7 @@ $ git clone https://github.com/odairdev/inventoryServer && cd inventoryServer
 $ npm install
 
 # Start the app
-$ npm start
+$ npm dev
 
 # Well done, project is running!
 
