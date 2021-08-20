@@ -32,7 +32,7 @@ class ProductsController {
 
         const products = await repository.find()
 
-        return response.json(products)
+        return response.json({products})
     }
 
     async update(request: Request, response: Response) {
