@@ -3,7 +3,7 @@
 </h1>
 
 <h3 align="center">
-  Web Server to manage prodcuts in an inventory system </br>
+  Web Server to manage products in an inventory system </br>
   Made with NodeJS, TypeORM and Typescript
 </h3>
 
