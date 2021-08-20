@@ -24,7 +24,7 @@ class ProductsController {
 
         await repository.save(product)
 
-        return response.status(200).json({message: 'Product created successfully.'})
+        return response.status(200).json({product})
     }
 
     async read(request: Request, response: Response) {
@@ -60,7 +60,7 @@ class ProductsController {
             amount
         }
 
-        return response.status(200).json(updatedProduct)
+        return response.status(200).json({updatedProduct})
     }
 
     async delete(request: Request, response: Response) {

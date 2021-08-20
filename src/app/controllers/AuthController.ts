@@ -21,7 +21,7 @@ class AuthController {
 
         if(!isValidPassword) { return response.status(401).json({error: 'Password invalid.'})}
 
-        const token = jwt.sign( {id: user.id}, `${process.env.JWT_SECRET}`, {expiresIn: '1d'} )
+        const token = jwt.sign( {id: user.id}, `${process.env.JWT_SECRET}`, {expiresIn: '7d'} )
 
         // @ts-expect-error
         delete user.password
