@@ -10,6 +10,10 @@ class ProductsController {
 
         const { name, category, amount } = request.body
 
+        if(name.length === 0 || category.length === 0 || name.length > 20 || category.length > 20) {
+            return response.status(400).json({error: 'Product name/category cannot be blank or have more than 20 characters'})
+        } 
+
         if(isNaN(amount) || !Number.isInteger(amount) || amount <= 0) {
             return response.status(400).json({error: 'Product amount must be an integer above 0.'})
         }
