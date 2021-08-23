@@ -17,12 +17,12 @@ routes.post('/auth', AuthController.authenticate)
 routes.get('/products',authMiddleware, ProductsController.read)
 routes.post('/products', authMiddleware, ProductsController.create)
 routes.put('/products', authMiddleware, ProductsController.update)
-routes.delete('/products', authMiddleware, ProductsController.delete)
+routes.delete('/products/:id', authMiddleware, ProductsController.delete)
 
 //Inventory Routes
 routes.get('/inventory',authMiddleware, InventoryOrdersController.read)
 routes.post('/inventory', authMiddleware, InventoryOrdersController.create)
 routes.put('/inventory', authMiddleware, InventoryOrdersController.update)
-routes.delete('/inventory', authMiddleware, InventoryOrdersController.delete)
+routes.delete('/inventory/:id', authMiddleware, InventoryOrdersController.delete)
 
 export default routes;

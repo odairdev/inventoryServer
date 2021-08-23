@@ -94,9 +94,8 @@ class InventoryOrders {
 
     async delete(request: Request, response: Response) {
         const ordersRepository = getRepository(InvetoryOrders)
-        const productsRepository = getRepository(Product)
         
-        const { id } = request.body
+        const { id } = request.params
 
         if(!isUuid(id)) { return response.status(400).json({error: 'Id not valid.'})}
 

@@ -70,7 +70,7 @@ class ProductsController {
     async delete(request: Request, response: Response) {
         const repository = getRepository(Product)
 
-        const { id } = request.body
+        const { id } = request.params
 
         if(!isUuid(id)) { return response.status(400).json({error: 'Id not valid.'})}
 
