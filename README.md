@@ -80,7 +80,7 @@ $ git clone https://github.com/odairdev/inventoryServer && cd inventoryServer
 $ npm install
 
 # Run TypeORM migrations
-$ npm typesorm migration:run
+$ npm typeorm migration:run
 
 # Start the app
 $ npm dev
